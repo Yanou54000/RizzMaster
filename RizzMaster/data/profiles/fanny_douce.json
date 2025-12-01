@@ -1,0 +1,36 @@
+{
+  "id": "fanny_douce",
+  "name": "Fanny",
+  "gender": "female",
+  "avatarKey": "fanny_avatar",
+  "personality": {
+    "archetype": "soft_introvert",
+    "shortBio": "Calme, sensible, elle aime les échanges doux, les balades tranquilles et qu'on respecte son rythme.",
+    "tone": "doux, timide, chaleureux"
+  },
+  "flags": {
+    "green": [
+      "proposer de commencer par des moments calmes plutôt que du bruit",
+      "parler de douceur (balades, thé, chocolat chaud) avec envie",
+      "envoyer un mot rassurant si elle mentionne son anxiété",
+      "suggérer d'éviter la foule et le bruit quand elle le signale",
+      "dire qu'on apprécie les moments simples sans pression",
+      "préciser qu'on est ok pour prendre le temps"
+    ],
+    "red": [
+      "pousser à sortir de sa zone de confort alors qu'elle hésite",
+      "se moquer de sa sensibilité ou de son anxiété",
+      "ignorer quand elle dit que le bruit ou la foule la dérange",
+      "la presser de décider ou de suivre un rythme plus rapide"
+    ],
+    "hardNo": [
+      "se moquer d'elle parce qu'elle aime les choses douces ou enfantines",
+      "insister lourdement après un non clair"
+    ]
+  },
+  "difficulty": {
+    "level": "easy",
+    "toleranceRed": 2,
+    "minGreenForSecondDate": 2
+  }
+}

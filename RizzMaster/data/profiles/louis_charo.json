@@ -1,0 +1,37 @@
+{
+  "id": "louis_charo",
+  "name": "Louis",
+  "gender": "male",
+  "avatarKey": "louis_avatar",
+  "personality": {
+    "archetype": "serial_flirt",
+    "shortBio": "Charo bavard qui parle à plein de filles et teste qui ose vraiment matcher son rythme.",
+    "tone": "confiant, taquin, direct"
+  },
+  "flags": {
+    "green": [
+      "prendre les devants sans hésiter et proposer un move clair",
+      "répondre avec audace et un peu de piquant",
+      "assumer la drague cash sans jouer la timide",
+      "proposer de se voir rapidement plutôt que tourner autour du pot",
+      "matcher son ton taquin et reconnaître qu'il parle à d'autres sans drame"
+    ],
+    "red": [
+      "répondre de façon timide ou floue quand il chauffe la discussion",
+      "faire la morale parce qu'il parle à plusieurs filles",
+      "être jaloux ou possessif dès le début",
+      "ne jamais proposer rien de concret et laisser traîner la conversation",
+      "casser son énergie en faisant semblant de s'ennuyer"
+    ],
+    "hardNo": [
+      "insulter ou slut-shamer parce qu'il est cash",
+      "poser des ultimatums jaloux dès le début",
+      "rabaisser son style charo de manière méprisante"
+    ]
+  },
+  "difficulty": {
+    "level": "medium",
+    "toleranceRed": 2,
+    "minGreenForSecondDate": 3
+  }
+}

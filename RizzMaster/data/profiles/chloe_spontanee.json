@@ -1,0 +1,35 @@
+{
+  "id": "chloe_spontanee",
+  "name": "Chloé",
+  "gender": "female",
+  "avatarKey": "chloe_avatar",
+  "personality": {
+    "archetype": "thrill_seeker",
+    "shortBio": "Énergique, bruyante, accro aux défis débiles et aux décisions impulsives.",
+    "tone": "excitée, joueuse, impulsive"
+  },
+  "flags": {
+    "green": [
+      "partir sur des idées spontanées sans tout planifier",
+      "proposer ou accepter des petits défis absurdes juste pour le fun",
+      "réagir avec enthousiasme quand ça bouge ou que ça surprend",
+      "taquiner de façon audacieuse quand l'ambiance chauffe",
+      "encourager l'improvisation et suivre le momentum"
+    ],
+    "red": [
+      "vouloir tout contrôler ou tout planifier dans la conversation",
+      "répondre de façon molle quand elle cherche du peps",
+      "refuser systématiquement les idées un peu folles",
+      "diminuer son énergie ou faire semblant de s'ennuyer"
+    ],
+    "hardNo": [
+      "rabaisser son côté bruyant ou hyperactif",
+      "casser l'ambiance exprès en faisant la morale"
+    ]
+  },
+  "difficulty": {
+    "level": "medium",
+    "toleranceRed": 3,
+    "minGreenForSecondDate": 2
+  }
+}

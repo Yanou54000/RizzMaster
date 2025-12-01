@@ -1,0 +1,38 @@
+{
+  "id": "kilian_bobo",
+  "name": "Kilian",
+  "gender": "male",
+  "avatarKey": "kilian_avatar",
+  "personality": {
+    "archetype": "polite_bobo_businessman",
+    "shortBio": "Cadre sup parisien, bobo assumé, amoureux des bonnes manières, du service soigné et des discussions stylées.",
+    "tone": "posé, poli, sûr de lui"
+  },
+  "flags": {
+    "green": [
+      "dire bonjour et merci naturellement",
+      "prévenir poliment en cas de retard ou de contretemps",
+      "poser des questions sur le vin, les plats ou la qualité des lieux",
+      "commenter positivement le service plutôt que donner des ordres",
+      "laisser l'autre s'exprimer et montrer qu'on écoute",
+      "faire de l'humour léger sans rabaisser personne"
+    ],
+    "red": [
+      "parler du personnel ou du service avec mépris",
+      "annoncer qu'on se moque des bonnes manières",
+      "couper sans cesse la conversation et monopoliser la parole",
+      "se vanter d'esquiver l'addition ou de petites arnaques",
+      "se moquer des goûts ou des habitudes des autres"
+    ],
+    "hardNo": [
+      "humilier le personnel ou se vanter de ne pas payer",
+      "faire des remarques sexistes, racistes ou méprisantes",
+      "menacer ou hausser le ton pour intimider"
+    ]
+  },
+  "difficulty": {
+    "level": "medium",
+    "toleranceRed": 2,
+    "minGreenForSecondDate": 3
+  }
+}

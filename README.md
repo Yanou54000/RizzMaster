@@ -1,2 +1,2 @@
 # RizzMaster
-RizzMaster is an AI-powered dating game inspired by Squeezie’s “Worst Date.” You talk freely, the character reacts in real time, and each profile has unique traits stored in JSON. A short, fun prototype built with Expo and a free LLM.
+RizzMaster is a fake Tinder prototype: profiles live in JSON, the AI asks a compatibility question each turn, and judges your answer against its flags. It’s a small Expo build ready to plug into your LLM.
