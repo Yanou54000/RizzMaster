@@ -1,88 +1,112 @@
-import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Animated,
+  Dimensions,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 type HomepageProps = {
-  onPlay?: () => void;
+  onPlay: () => void;
 };
 
-const logo = require('../assets/rizz-logo.png');
+const wallpaper = require('../assets/rizzmasterWallpaper.png');
+
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
+const LOADING_DURATION = 3000; // 3 secondes de chargement
 
 const Homepage: React.FC<HomepageProps> = ({ onPlay }) => {
+  const [progress, setProgress] = useState(0);
+  const animatedWidth = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(animatedWidth, {
+      toValue: 100,
+      duration: LOADING_DURATION,
+      useNativeDriver: false,
+    }).start();
+
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        return prev + 1;
+      });
+    }, LOADING_DURATION / 100);
+
+    const timeout = setTimeout(() => {
+      onPlay();
+    }, LOADING_DURATION);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [animatedWidth, onPlay]);
+
+  const progressBarWidth = animatedWidth.interpolate({
+    inputRange: [0, 100],
+    outputRange: ['0%', '100%'],
+  });
+
   return (
-    <View style={styles.screen}>
-      <View style={styles.card}>
-        <Image source={logo} style={styles.logo} resizeMode="contain" />
-        <TouchableOpacity
-          accessibilityRole="button"
-          activeOpacity={0.9}
-          style={styles.primary}
-          onPress={onPlay}
-        >
-          <Text style={styles.primaryText}>Jouer</Text>
-        </TouchableOpacity>
+    <ImageBackground source={wallpaper} style={styles.background} resizeMode="cover">
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>Chargement... {progress}%</Text>
+        <View style={styles.progressBarBackground}>
+          <Animated.View
+            style={[styles.progressBarFill, { width: progressBarWidth }]}
+          />
+        </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
 export default Homepage;
 
 const styles = StyleSheet.create({
-  screen: {
+  background: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  card: {
     width: '100%',
-    backgroundColor: '#fff6ff',
-    borderRadius: 28,
-    padding: 22,
-    shadowColor: '#0f172a',
-    shadowOffset: { width: 0, height: 14 },
-    shadowOpacity: 0.14,
-    shadowRadius: 26,
-    elevation: 10,
-    gap: 18,
-    borderWidth: 2,
-    borderColor: '#ffd0f0',
+    height: '100%',
   },
-  logoWrap: {
-    backgroundColor: '#fefefe',
-    borderRadius: 20,
-    padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: '#ffd48f',
-    shadowColor: '#ffae3d',
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.18,
-    shadowRadius: 18,
-    elevation: 8,
+  loadingContainer: {
+    position: 'absolute',
+    bottom: 40,
+    left: 20,
+    right: 20,
+    gap: 10,
   },
-  logo: {
-    width: '100%',
-    height: 200,
+  loadingText: {
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: 18,
+    textAlign: 'center',
+    letterSpacing: 0.4,
+    textShadowColor: 'rgba(0, 0, 0, 0.7)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 4,
   },
-  primary: {
-    backgroundColor: '#ff4da1',
-    paddingVertical: 14,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#ff2d64',
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.35,
-    shadowRadius: 18,
-    elevation: 8,
+  progressBarBackground: {
+    height: 24,
+    backgroundColor: 'rgba(255, 224, 240, 0.8)',
+    borderRadius: 12,
+    overflow: 'hidden',
     borderWidth: 2,
     borderColor: '#ff9ed1',
   },
-  primaryText: {
-    color: '#fff',
-    fontWeight: '900',
-    fontSize: 16,
-    letterSpacing: 0.4,
+  progressBarFill: {
+    height: '100%',
+    backgroundColor: '#ff4da1',
+    borderRadius: 10,
+    shadowColor: '#ff2d64',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.35,
+    shadowRadius: 4,
   },
 });

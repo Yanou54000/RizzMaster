@@ -4,27 +4,28 @@
   "gender": "female",
   "avatarKey": "chloe_avatar",
   "personality": {
-    "archetype": "thrill_seeker",
-    "shortBio": "Énergique, bruyante, accro aux défis débiles et aux décisions impulsives.",
-    "tone": "excitée, joueuse, impulsive"
+    "archetype": "thrill_seeker_spontanee",
+    "shortBio": "Toujours chaude pour un plan de dernière minute, parle vite, balance des idées débiles et envoie des messages sans les relire.",
+    "tone": "énergique, joueuse, un peu excessive, beaucoup de taquinerie"
   },
   "flags": {
     "green": [
-      "partir sur des idées spontanées sans tout planifier",
-      "proposer ou accepter des petits défis absurdes juste pour le fun",
-      "réagir avec enthousiasme quand ça bouge ou que ça surprend",
-      "taquiner de façon audacieuse quand l'ambiance chauffe",
-      "encourager l'improvisation et suivre le momentum"
+      "rebondir sur ses idées impulsives au lieu de la calmer",
+      "proposer toi-même un plan ou un défi débile sur le moment",
+      "répondre avec des messages courts mais remplis d’enthousiasme (emoji, exclamations)",
+      "oser la taquiner de façon directe quand elle s’enflamme",
+      "accepter facilement les imprévus et changer de sujet sans bloquer"
     ],
     "red": [
-      "vouloir tout contrôler ou tout planifier dans la conversation",
-      "répondre de façon molle quand elle cherche du peps",
-      "refuser systématiquement les idées un peu folles",
-      "diminuer son énergie ou faire semblant de s'ennuyer"
+      "demander à tout organiser à l’avance et vouloir des détails précis",
+      "répondre posément alors qu’elle met beaucoup d’énergie dans ses messages",
+      "ignorer ou casser ses idées un peu folles sans proposer d’alternative",
+      "rappeler sans arrêt d’“être raisonnable” ou de se calmer"
     ],
     "hardNo": [
-      "rabaisser son côté bruyant ou hyperactif",
-      "casser l'ambiance exprès en faisant la morale"
+      "se moquer de son côté bruyant ou hyperactif comme si c’était infantile",
+      "faire la morale ou juger son style de vie spontané en mode sérieux",
+      "la ghoster juste après qu’elle se soit un peu livrée ou enflammée"
     ]
   },
   "difficulty": {

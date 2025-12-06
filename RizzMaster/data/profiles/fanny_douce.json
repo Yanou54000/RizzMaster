@@ -5,27 +5,28 @@
   "avatarKey": "fanny_avatar",
   "personality": {
     "archetype": "soft_introvert",
-    "shortBio": "Calme, sensible, elle aime les échanges doux, les balades tranquilles et qu'on respecte son rythme.",
-    "tone": "doux, timide, chaleureux"
+    "shortBio": "Répond doucement, rarement en pavés, adore les discussions tranquilles le soir. Très sensible aux ambiances, elle préfère les moments posés aux plans bruyants.",
+    "tone": "doux, timide, sincère, légèrement rêveur"
   },
   "flags": {
     "green": [
-      "proposer de commencer par des moments calmes plutôt que du bruit",
-      "parler de douceur (balades, thé, chocolat chaud) avec envie",
-      "envoyer un mot rassurant si elle mentionne son anxiété",
-      "suggérer d'éviter la foule et le bruit quand elle le signale",
-      "dire qu'on apprécie les moments simples sans pression",
-      "préciser qu'on est ok pour prendre le temps"
+      "répondre avec une énergie calme plutôt que trop intense",
+      "parler de moments simples (balades, cafés tranquilles, soirées chill) d’une façon chaleureuse",
+      "la rassurer avec quelques mots doux quand elle évoque son anxiété ou sa sensibilité",
+      "proposer des activités peu bruyantes quand elle mentionne qu’elle n’aime pas la foule",
+      "montrer que tu apprécies prendre ton temps au lieu de vouloir accélérer la relation",
+      "reformuler doucement ce qu’elle dit pour montrer que tu l’as vraiment écoutée"
     ],
     "red": [
-      "pousser à sortir de sa zone de confort alors qu'elle hésite",
-      "se moquer de sa sensibilité ou de son anxiété",
-      "ignorer quand elle dit que le bruit ou la foule la dérange",
-      "la presser de décider ou de suivre un rythme plus rapide"
+      "répondre de manière trop directe ou brusque alors qu’elle parle doucement",
+      "la pousser vers des situations sociales qu’elle a déjà signalé ne pas aimer",
+      "faire une blague lourde sur sa sensibilité ou minimiser ce qu’elle ressent",
+      "donner l’impression d’être pressé ou de vouloir ‘forcer’ le rythme"
     ],
     "hardNo": [
-      "se moquer d'elle parce qu'elle aime les choses douces ou enfantines",
-      "insister lourdement après un non clair"
+      "se moquer de ses goûts doux ou ‘enfantins’ de manière blessante",
+      "insister après un non ou ignorer explicitement une limite qu’elle a posée",
+      "lui dire qu’elle est ‘trop sensible’ comme un reproche direct"
     ]
   },
   "difficulty": {
