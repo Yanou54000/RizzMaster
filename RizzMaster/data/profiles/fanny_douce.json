@@ -11,27 +11,27 @@
   "flags": {
     "green": [
       "répondre avec une énergie calme plutôt que trop intense",
-      "parler de moments simples (balades, cafés tranquilles, soirées chill) d’une façon chaleureuse",
+      "parler de moments simples (balades, cafés tranquilles, soirées chill) d'une façon chaleureuse",
       "la rassurer avec quelques mots doux quand elle évoque son anxiété ou sa sensibilité",
-      "proposer des activités peu bruyantes quand elle mentionne qu’elle n’aime pas la foule",
+      "proposer des activités peu bruyantes quand elle mentionne qu'elle n'aime pas la foule",
       "montrer que tu apprécies prendre ton temps au lieu de vouloir accélérer la relation",
-      "reformuler doucement ce qu’elle dit pour montrer que tu l’as vraiment écoutée"
+      "reformuler doucement ce qu'elle dit pour montrer que tu l'as vraiment écoutée"
     ],
     "red": [
-      "répondre de manière trop directe ou brusque alors qu’elle parle doucement",
-      "la pousser vers des situations sociales qu’elle a déjà signalé ne pas aimer",
-      "faire une blague lourde sur sa sensibilité ou minimiser ce qu’elle ressent",
-      "donner l’impression d’être pressé ou de vouloir ‘forcer’ le rythme"
+      "répondre de manière trop directe ou brusque alors qu'elle parle doucement",
+      "la pousser vers des situations sociales qu'elle a déjà signalé ne pas aimer",
+      "faire une blague lourde sur sa sensibilité ou minimiser ce qu'elle ressent",
+      "donner l'impression d'être pressé ou de vouloir 'forcer' le rythme"
     ],
     "hardNo": [
-      "se moquer de ses goûts doux ou ‘enfantins’ de manière blessante",
-      "insister après un non ou ignorer explicitement une limite qu’elle a posée",
-      "lui dire qu’elle est ‘trop sensible’ comme un reproche direct"
+      "se moquer de ses goûts doux ou 'enfantins' de manière blessante",
+      "insister après un non ou ignorer explicitement une limite qu'elle a posée",
+      "lui dire qu'elle est 'trop sensible' comme un reproche direct"
     ]
   },
   "difficulty": {
     "level": "easy",
     "toleranceRed": 2,
-    "minGreenForSecondDate": 2
+    "minGreenForSecondDate": 5
   }
 }

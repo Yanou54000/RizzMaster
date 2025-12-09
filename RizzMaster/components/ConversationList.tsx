@@ -28,6 +28,8 @@ const avatars: { [key: string]: any } = {
 };
 
 const CHAT_STORAGE_KEY_PREFIX = 'rizzmaster_chat_';
+const FLAGS_STORAGE_KEY_PREFIX = 'rizzmaster_flags_';
+const MATCHED_PROFILES_KEY = 'rizzmaster_matched_profiles';
 
 type Props = {
   onSelectConversation: (profile: CharacterProfile) => void;
@@ -82,8 +84,19 @@ const ConversationList: React.FC<Props> = ({ onSelectConversation }) => {
 
   const deleteConversation = useCallback(async (profileId: string) => {
     try {
-      const key = `${CHAT_STORAGE_KEY_PREFIX}${profileId}`;
-      await AsyncStorage.removeItem(key);
+      const chatKey = `${CHAT_STORAGE_KEY_PREFIX}${profileId}`;
+      const flagsKey = `${FLAGS_STORAGE_KEY_PREFIX}${profileId}`;
+      await Promise.all([
+        AsyncStorage.removeItem(chatKey),
+        AsyncStorage.removeItem(flagsKey),
+      ]);
+      const matchedData = await AsyncStorage.getItem(MATCHED_PROFILES_KEY);
+      if (matchedData) {
+        const matched = JSON.parse(matchedData);
+        const updatedMatched = matched.filter((id: string) => id !== profileId);
+        await AsyncStorage.setItem(MATCHED_PROFILES_KEY, JSON.stringify(updatedMatched));
+      }
+
       setConversations(prev => prev.filter(c => c.profile.id !== profileId));
     } catch (error) {
       console.warn('Error deleting conversation:', error);

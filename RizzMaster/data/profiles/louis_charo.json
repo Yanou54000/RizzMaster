@@ -43,6 +43,6 @@
   "difficulty": {
     "level": "medium",
     "toleranceRed": 2,
-    "minGreenForSecondDate": 3
+    "minGreenForSecondDate": 2
   }
 }

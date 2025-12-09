@@ -13,12 +13,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
 import { CharacterProfile } from '../types/character';
 import GameResultScreen from './GameResultScreen';
 import { useGameState } from '../hooks/useGameState';
 import { useChat, parseAssistantMessage } from '../hooks/useChat';
 import { avatars } from './CharacterSelect';
+
+const MATCHED_PROFILES_KEY = 'rizzmaster_matched_profiles';
 
 type Props = {
   onBack?: () => void;
@@ -94,10 +97,20 @@ const ChatScreen: React.FC<Props> = ({ onBack, profile }) => {
     resetGame();
   }, [resetGame]);
 
-  const handleBackToMenu = useCallback(() => {
-    resetGame();
+  const handleBackToMenu = useCallback(async () => {
+    await resetGame();
+    try {
+      const matchedData = await AsyncStorage.getItem(MATCHED_PROFILES_KEY);
+      if (matchedData) {
+        const matched = JSON.parse(matchedData);
+        const updatedMatched = matched.filter((id: string) => id !== profile.id);
+        await AsyncStorage.setItem(MATCHED_PROFILES_KEY, JSON.stringify(updatedMatched));
+      }
+    } catch (error) {
+      console.warn('Error removing from matched:', error);
+    }
     onBack?.();
-  }, [resetGame, onBack]);
+  }, [resetGame, onBack, profile.id]);
 
   const indicatorPosition = useMemo(() => {
     const balance = flagStats.green - flagStats.red;

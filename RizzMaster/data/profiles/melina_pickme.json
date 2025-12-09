@@ -41,7 +41,7 @@
   },
   "difficulty": {
     "level": "hard",
-    "toleranceRed": 1,
-    "minGreenForSecondDate": 4
+    "toleranceRed": 2,
+    "minGreenForSecondDate": 6
   }
 }

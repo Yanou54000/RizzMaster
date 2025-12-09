@@ -98,19 +98,37 @@ export const useChat = (
       return;
     }
 
+    // Vérifier la clé API avant de commencer
+    const apiKey = process.env.EXPO_PUBLIC_OPENAI_API_KEY;
+    if (!apiKey) {
+      setNetworkError(
+        'EXPO_PUBLIC_OPENAI_API_KEY est manquant. Ajoute ta clé OpenAI dans ton environnement Expo.'
+      );
+      return;
+    }
+
     const trimmed = input.trim();
     const updatedMessages: Message[] = [...messages, { role: 'user', content: trimmed }];
     setMessages(updatedMessages);
     setSending(true);
     setNetworkError(null);
 
-    try {
-      const apiKey = process.env.EXPO_PUBLIC_OPENAI_API_KEY;
-      if (!apiKey) {
-        throw new Error(
-          'EXPO_PUBLIC_OPENAI_API_KEY est manquant. Ajoute ta clé OpenAI dans ton environnement Expo.'
-        );
+    // Si c'est le premier message, ajouter le profil aux matchés
+    if (messages.length === 0) {
+      try {
+        const MATCHED_PROFILES_KEY = 'rizzmaster_matched_profiles';
+        const matchedData = await AsyncStorage.getItem(MATCHED_PROFILES_KEY);
+        const matched = matchedData ? JSON.parse(matchedData) : [];
+        if (!matched.includes(profile.id)) {
+          matched.push(profile.id);
+          await AsyncStorage.setItem(MATCHED_PROFILES_KEY, JSON.stringify(matched));
+        }
+      } catch (error) {
+        console.warn('Error saving match on first message:', error);
       }
+    }
+
+    try {
 
       const contextMessage = `[CONTEXTE INTERNE - NE PAS MENTIONNER: Green flags cumulés: ${flagStats.green}, Red flags cumulés: ${flagStats.red}, Tolérance red: ${profile.difficulty.toleranceRed}, Min green pour gagner: ${profile.difficulty.minGreenForSecondDate}, Échanges: ${Math.floor(updatedMessages.length / 2)}]`;
 

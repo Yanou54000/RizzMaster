@@ -30,7 +30,7 @@
   },
   "difficulty": {
     "level": "medium",
-    "toleranceRed": 3,
-    "minGreenForSecondDate": 2
+    "toleranceRed": 1,
+    "minGreenForSecondDate": 5
   }
 }

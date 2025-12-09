@@ -131,6 +131,12 @@ const CharacterSelect: React.FC<Props> = ({ onSelectCharacter }) => {
   );
 
   useEffect(() => {
+    if (activeTab === 'swipe') {
+      loadSwipeData();
+    }
+  }, [activeTab, loadSwipeData]);
+
+  useEffect(() => {
     availableProfiles.forEach((profile) => {
       const avatar = avatars[profile.avatarKey];
       if (avatar) {
@@ -141,16 +147,25 @@ const CharacterSelect: React.FC<Props> = ({ onSelectCharacter }) => {
 
   const resetAllSwipes = async () => {
     try {
-      await Promise.all([
-        AsyncStorage.removeItem(MATCHED_PROFILES_KEY),
-        AsyncStorage.removeItem(SKIPPED_PROFILES_KEY),
-      ]);
+      await AsyncStorage.removeItem(SKIPPED_PROFILES_KEY);
+      await loadSwipeData();
+    } catch (error) {
+      console.warn('Error resetting swipes:', error);
+    }
+  };
+
+  const resetAllData = async () => {
+    try {
+      const keys = await AsyncStorage.getAllKeys();
+      const rizzMasterKeys = keys.filter(key => key.startsWith('rizzmaster_'));
+      await AsyncStorage.multiRemove(rizzMasterKeys);
+
       setMatchedIds([]);
       setSkippedIds([]);
       setAvailableProfiles(profiles);
       setCurrentIndex(0);
     } catch (error) {
-      console.warn('Error resetting swipes:', error);
+      console.warn('Error resetting all data:', error);
     }
   };
 
@@ -196,19 +211,29 @@ const CharacterSelect: React.FC<Props> = ({ onSelectCharacter }) => {
     });
   };
 
-  const swipeRight = () => {
+  const swipeRight = async () => {
     const profile = availableProfilesRef.current[currentIndexRef.current];
     if (!profile) return;
+    setCurrentIndex(prev => prev + 1);
     Animated.timing(position, {
       toValue: { x: SCREEN_WIDTH + 100, y: 0 },
       duration: 300,
       useNativeDriver: false,
-    }).start(() => {
-      const newMatched = [...matchedIdsRef.current, profile.id];
-      AsyncStorage.setItem(MATCHED_PROFILES_KEY, JSON.stringify(newMatched));
-      setMatchedIds(newMatched);
-      position.setValue({ x: 0, y: 0 });
-      onSelectCharacter(profile);
+    }).start(async () => {
+      try {
+        const chatKey = `rizzmaster_chat_${profile.id}`;
+        const flagsKey = `rizzmaster_flags_${profile.id}`;
+        await Promise.all([
+          AsyncStorage.removeItem(chatKey),
+          AsyncStorage.removeItem(flagsKey),
+        ]);
+
+        position.setValue({ x: 0, y: 0 });
+        onSelectCharacter(profile);
+      } catch (error) {
+        console.warn('Error clearing chat:', error);
+        setCurrentIndex(prev => prev - 1);
+      }
     });
   };
 
@@ -337,6 +362,14 @@ const CharacterSelect: React.FC<Props> = ({ onSelectCharacter }) => {
 
     return (
       <>
+        <View style={styles.resetButtonTop}>
+          <TouchableOpacity
+            style={styles.resetAllButton}
+            onPress={resetAllData}
+          >
+            <Text style={styles.resetAllButtonText}>🔄 Réinitialiser tout</Text>
+          </TouchableOpacity>
+        </View>
         <View style={styles.cardsContainer}>
           {availableProfiles.map((profile, index) => renderCard(profile, index)).reverse()}
         </View>
@@ -377,6 +410,28 @@ export default CharacterSelect;
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+  },
+  resetButtonTop: {
+    position: 'absolute',
+    top: 50,
+    right: 16,
+    zIndex: 100,
+  },
+  resetAllButton: {
+    backgroundColor: '#ef4444',
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  resetAllButtonText: {
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: 13,
   },
   cardsContainer: {
     flex: 1,
