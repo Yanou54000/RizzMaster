@@ -15,7 +15,7 @@ type HomepageProps = {
 const wallpaper = require('../assets/rizzmasterWallpaper.png');
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
-const LOADING_DURATION = 3000; // 3 secondes de chargement
+const LOADING_DURATION = 3000;
 
 const Homepage: React.FC<HomepageProps> = ({ onPlay }) => {
   const [progress, setProgress] = useState(0);
@@ -26,25 +26,18 @@ const Homepage: React.FC<HomepageProps> = ({ onPlay }) => {
       toValue: 100,
       duration: LOADING_DURATION,
       useNativeDriver: false,
-    }).start();
+    }).start(({ finished }) => {
+      if (finished) {
+        setTimeout(() => onPlay(), 300);
+      }
+    });
 
     const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prev + 1;
-      });
+      setProgress((prev) => Math.min(prev + 1, 100));
     }, LOADING_DURATION / 100);
-
-    const timeout = setTimeout(() => {
-      onPlay();
-    }, LOADING_DURATION);
 
     return () => {
       clearInterval(interval);
-      clearTimeout(timeout);
     };
   }, [animatedWidth, onPlay]);
 

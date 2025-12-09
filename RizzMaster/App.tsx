@@ -23,17 +23,16 @@ export default function App() {
     <GestureHandlerRootView style={styles.root}>
       <NavigationContainer>
         <StatusBar style="auto" />
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator screenOptions={{ headerShown: false, gestureEnabled: false }}>
           <Stack.Screen name="Home">
             {({ navigation }) => (
-              <Homepage onPlay={() => navigation.navigate('CharacterSelect')} />
+              <Homepage onPlay={() => navigation.replace('CharacterSelect')} />
             )}
           </Stack.Screen>
           <Stack.Screen name="CharacterSelect">
             {({ navigation }) => (
               <SafeAreaView style={styles.container}>
                 <CharacterSelect
-                  onBack={() => navigation.goBack()}
                   onSelectCharacter={(profile) => navigation.navigate('Chat', { profile })}
                 />
               </SafeAreaView>
@@ -61,8 +60,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#7bd1ff',
-    paddingHorizontal: 20,
-    paddingTop: 20,
+    backgroundColor: '#f8f9fa',
+    paddingHorizontal: 16,
+    paddingTop: 12,
   },
 });

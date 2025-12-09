@@ -41,15 +41,7 @@ export const useChat = (
   const [sending, setSending] = useState(false);
   const [networkError, setNetworkError] = useState<string | null>(null);
 
-  // Load prompt and history on mount
   useEffect(() => {
-    console.log(
-      'OpenAI API key loaded?',
-      process.env.EXPO_PUBLIC_OPENAI_API_KEY
-        ? `${process.env.EXPO_PUBLIC_OPENAI_API_KEY.slice(0, 8)}...`
-        : 'absent'
-    );
-
     const loadPrompt = async () => {
       try {
         const asset = Asset.fromModule(promptAsset);
@@ -90,7 +82,6 @@ export const useChat = (
     loadHistory();
   }, [profile, CHAT_STORAGE_KEY]);
 
-  // Persist messages on change
   useEffect(() => {
     const persistHistory = async () => {
       try {
@@ -225,7 +216,6 @@ export const parseAssistantMessage = (raw: string): string => {
       return parsed.message.trim();
     }
   } catch {
-    // Keep raw string if JSON parsing fails
   }
 
   return raw.trim();

@@ -23,7 +23,7 @@ const GameResultScreen: React.FC<Props> = ({
   return (
     <View style={styles.overlay}>
       <View style={[styles.card, isWin ? styles.winCard : styles.loseCard]}>
-        <Text style={styles.emoji}>{isWin ? '💖' : '💔'}</Text>
+        <Text style={styles.emoji}>{isWin ? '❤️' : '💔'}</Text>
         <Text style={[styles.title, isWin ? styles.winTitle : styles.loseTitle]}>
           {isWin ? 'C\'est gagné !' : 'Match annulé'}
         </Text>
@@ -38,16 +38,16 @@ const GameResultScreen: React.FC<Props> = ({
 
         <View style={styles.statsContainer}>
           <View style={styles.statRow}>
-            <Text style={styles.statLabel}>🟢 Green Flags</Text>
+            <Text style={styles.statLabel}>Green Flags</Text>
             <Text style={[styles.statValue, styles.greenValue]}>{greenFlags}</Text>
           </View>
           <View style={styles.statRow}>
-            <Text style={styles.statLabel}>🔴 Red Flags</Text>
+            <Text style={styles.statLabel}>Red Flags</Text>
             <Text style={[styles.statValue, styles.redValue]}>{redFlags}</Text>
           </View>
           {hardNo && (
             <View style={styles.hardNoRow}>
-              <Text style={styles.hardNoText}>⛔ Hard No déclenché</Text>
+              <Text style={styles.hardNoText}>Hard No</Text>
             </View>
           )}
         </View>
@@ -80,7 +80,6 @@ export default GameResultScreen;
 const styles = StyleSheet.create({
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -94,9 +93,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 20 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.15,
     shadowRadius: 30,
     elevation: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
   },
   winCard: {
     backgroundColor: '#f0fdf4',
@@ -181,8 +182,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   primaryButton: {
-    backgroundColor: '#ff4da1',
-    shadowColor: '#ff2d64',
+    backgroundColor: '#0ea5e9',
+    shadowColor: '#0ea5e9',
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.3,
     shadowRadius: 12,

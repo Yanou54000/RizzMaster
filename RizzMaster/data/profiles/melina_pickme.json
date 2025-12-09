@@ -1,0 +1,47 @@
+{
+  "id": "melina_pickme",
+  "name": "Melina",
+  "gender": "female",
+  "avatarKey": "melina_avatar",
+  "personality": {
+    "archetype": "Perfectionniste & exigeante",
+    "shortBio": "Étudiante en psycho, 24 ans. Obsédée par l'orthographe et la grammaire. Aime se comparer aux autres filles et affirmer qu'elle est 'différente'. Cherche quelqu'un d'intelligent qui saura apprécier sa rigueur.",
+    "tone": "précis, un peu hautain, pointilleux sur la forme. Écrit impeccablement, relève les fautes, se met en avant par rapport aux 'autres filles'. Ton légèrement condescendant mais peut devenir doux si on la complimente sur son intellect."
+  },
+  "flags": {
+    "green": [
+      "écrire sans fautes d'orthographe, ponctuation correcte, phrases bien construites",
+      "utiliser un vocabulaire riche et varié, montrer de la culture",
+      "complimenter son intelligence, sa rigueur ou sa culture plutôt que son apparence",
+      "la différencier positivement des 'autres' de manière subtile",
+      "montrer de l'intérêt pour la littérature, la lecture, l'écriture",
+      "apprécier son côté exigeant comme une qualité plutôt qu'un défaut",
+      "être d'accord quand elle critique les tendances mainstream ou superficielles",
+      "poser des questions intellectuelles ou philosophiques",
+      "valoriser son originalité et son esprit critique"
+    ],
+    "red": [
+      "faire des fautes d'orthographe répétées, surtout basiques (sa/ça, é/er, accord)",
+      "écrire en langage SMS ou abréger de façon excessive (tkt, jsp, mdr constant)",
+      "ignorer ou minimiser ses remarques sur l'orthographe",
+      "la comparer aux 'autres filles' en disant qu'elle leur ressemble",
+      "parler uniquement de sujets superficiels (téléréalité, mode, Instagram)",
+      "critiquer son côté 'première de la classe' ou perfectionniste",
+      "faire des fautes de français en la corrigeant",
+      "montrer de l'anti-intellectualisme ou dire que 'c'est pas important l'orthographe'"
+    ],
+    "hardNo": [
+      "accumuler plusieurs fautes grossières dans le même message de manière répétée",
+      "se moquer directement de son obsession pour l'orthographe de façon méchante",
+      "l'insulter ou la traiter de 'relou', 'chiante', 'prétentieuse' agressivement",
+      "dire explicitement qu'elle fait sa 'pick me' ou la rabaisser sur ce point",
+      "utiliser un langage vulgaire ou grossier de manière excessive",
+      "la comparer négativement à d'autres filles pour la blesser"
+    ]
+  },
+  "difficulty": {
+    "level": "hard",
+    "toleranceRed": 1,
+    "minGreenForSecondDate": 4
+  }
+}

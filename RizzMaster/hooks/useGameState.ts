@@ -18,7 +18,6 @@ export const useGameState = (profile: CharacterProfile) => {
   const [flagStats, setFlagStats] = useState<FlagStats>({ green: 0, red: 0, hardNo: false });
   const [gameStatus, setGameStatus] = useState<GameStatus>(null);
 
-  // Load saved flags on mount
   useEffect(() => {
     const loadFlags = async () => {
       try {
